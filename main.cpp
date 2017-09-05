@@ -3,6 +3,7 @@
 #include<vector>
 #include<set>
 #include<string>
+#include<map>
 
 using namespace std;
 
@@ -67,6 +68,52 @@ int main()
    //set_intersection(a.begin(),a.end(),b.begin(),b.end(),insert_iterator<set<int> >(c,c.begin()));
    //set_difference(a.begin(),a.end(),b.begin(),b.end(),insert_iterator<set<int> >(c,c.begin()));
 
+    //map 使用
+    cout << "----map------!" << endl;
+    map<int,string> mapstu;
+    mapstu.insert(pair<int,string>(11,"lihao") );
+    mapstu.insert(pair<int,string>(22,"liuhua") );
+    mapstu.insert(pair<int,string>(33,"laha") );
+    mapstu.insert(pair<int,string>(44,"lio") );
+
+    mapstu.insert(map<int,string>::value_type(55,"xiaojun"));
+
+    mapstu[66]="haha2";
+
+    cout<<"size= "<<mapstu.size()<<endl;
+    map<int,string>::iterator stu_iter; //正向迭代器
+    for(stu_iter= mapstu.begin(); stu_iter!=mapstu.end();stu_iter++){
+        cout<<"key= "<<stu_iter->first<<" value= "<<stu_iter->second<<endl;
+    }
+
+    cout<<"反向"<<endl;
+    map<int,string>::reverse_iterator rstu_iter; //反向迭代器
+    for(rstu_iter= mapstu.rbegin(); rstu_iter!=mapstu.rend();rstu_iter++){
+        cout<<"key= "<<rstu_iter->first<<" value= "<<rstu_iter->second<<endl;
+    }
+
+    //数组法，但是不建议使用，许多空白的单位也输出了，
+    //for(int n=1;n<=mapstu.size();n++){
+      //cout<<mapstu[n]<<endl;
+    //}
+    //find
+    map<int,string>::iterator find_iter;
+    find_iter= mapstu.find(33);
+    if(find_iter ==mapstu.end()){
+        cout<<"no find"<<endl;
+    }else{
+        cout<<"find"<<" the value="<<find_iter->second<<endl;
+    }
+    //mapstu.clear();
+    //cout<<mapstu.empty()<<endl;
+    find_iter = mapstu.find(11);
+    mapstu.erase(find_iter);
+    int n=mapstu.erase(11);
+    cout<<n<<endl;
+//mapStudent.earse(mapStudent.begin(), mapStudent.end());
+            //成片删除要注意的是，也是STL的特性，删除区间是一个前闭后开的集合
+    mapstu.erase(mapstu.begin(),mapstu.end());
+    cout<<mapstu.size()<<endl;
 
 
     return 0;
