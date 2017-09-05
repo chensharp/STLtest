@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1504581162 source:c:\users\chensharp\documents\codeblocksworkshop\stltest\main.cpp
+	<iostream>
+	<vector>
+
